@@ -1,6 +1,6 @@
 package com.ctrip.framework.apollo.portal.entity.vo;
 
-import com.ctrip.framework.apollo.core.enums.Env;
+import com.ctrip.framework.apollo.core.constants.Env;
 import com.ctrip.framework.apollo.core.utils.StringUtils;
 import com.ctrip.framework.apollo.portal.entity.model.Verifiable;
 
@@ -18,12 +18,12 @@ public class NamespaceIdentifier implements Verifiable {
     this.appId = appId;
   }
 
-  public Env getEnv() {
+  public String getEnv() {
     return Env.valueOf(env);
   }
 
   public void setEnv(String env) {
-    this.env = env;
+    this.env = Env.valueOf(env);
   }
 
   public String getClusterName() {

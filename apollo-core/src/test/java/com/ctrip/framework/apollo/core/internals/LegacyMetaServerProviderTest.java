@@ -2,7 +2,7 @@ package com.ctrip.framework.apollo.core.internals;
 
 import static org.junit.Assert.assertEquals;
 
-import com.ctrip.framework.apollo.core.enums.Env;
+import com.ctrip.framework.apollo.core.constants.Env;
 import org.junit.After;
 import org.junit.Test;
 

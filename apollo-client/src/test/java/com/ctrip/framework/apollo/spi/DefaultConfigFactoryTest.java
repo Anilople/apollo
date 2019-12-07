@@ -21,7 +21,7 @@ import com.ctrip.framework.apollo.Config;
 import com.ctrip.framework.apollo.ConfigFile;
 import com.ctrip.framework.apollo.build.MockInjector;
 import com.ctrip.framework.apollo.core.enums.ConfigFileFormat;
-import com.ctrip.framework.apollo.core.enums.Env;
+import com.ctrip.framework.apollo.core.constants.Env;
 import com.ctrip.framework.apollo.internals.DefaultConfig;
 import com.ctrip.framework.apollo.internals.JsonConfigFile;
 import com.ctrip.framework.apollo.internals.LocalFileConfigRepository;
@@ -37,7 +37,7 @@ import com.ctrip.framework.apollo.util.ConfigUtil;
 public class DefaultConfigFactoryTest {
   private DefaultConfigFactory defaultConfigFactory;
   private static String someAppId;
-  private static Env someEnv;
+  private static String someEnv;
 
   @Before
   public void setUp() throws Exception {
@@ -196,7 +196,7 @@ public class DefaultConfigFactoryTest {
     }
 
     @Override
-    public Env getApolloEnv() {
+    public String getApolloEnv() {
       return someEnv;
     }
   }

@@ -1,6 +1,6 @@
 package com.ctrip.framework.apollo.core.internals;
 
-import com.ctrip.framework.apollo.core.enums.Env;
+import com.ctrip.framework.apollo.core.constants.Env;
 import com.ctrip.framework.apollo.core.spi.MetaServerProvider;
 import com.ctrip.framework.apollo.core.utils.ResourceUtils;
 import com.google.common.base.Strings;
@@ -15,7 +15,7 @@ public class LegacyMetaServerProvider implements MetaServerProvider {
 
   // make it as lowest as possible, yet not the lowest
   public static final int ORDER = MetaServerProvider.LOWEST_PRECEDENCE - 1;
-  private static final Map<Env, String> domains = new HashMap<>();
+  private static final Map<String, String> domains = new HashMap<>();
 
   public LegacyMetaServerProvider() {
     initialize();
@@ -48,7 +48,7 @@ public class LegacyMetaServerProvider implements MetaServerProvider {
   }
 
   @Override
-  public String getMetaServerAddress(Env targetEnv) {
+  public String getMetaServerAddress(String targetEnv) {
     String metaServerAddress = domains.get(targetEnv);
     return metaServerAddress == null ? null : metaServerAddress.trim();
   }

@@ -1,6 +1,5 @@
 package com.ctrip.framework.apollo.core;
 
-import com.ctrip.framework.apollo.core.enums.Env;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -42,7 +41,7 @@ public class MetaDomainConsts {
   public static final String DEFAULT_META_URL = "http://apollo.meta";
 
   // env -> meta server address cache
-  private static final Map<Env, String> metaServerAddressCache = Maps.newConcurrentMap();
+  private static final Map<String, String> metaServerAddressCache = Maps.newConcurrentMap();
   private static volatile List<MetaServerProvider> metaServerProviders = null;
 
   private static final long REFRESH_INTERVAL_IN_SECOND = 60;// 1 min
@@ -56,7 +55,7 @@ public class MetaDomainConsts {
   /**
    * Return one meta server address. If multiple meta server addresses are configured, will select one.
    */
-  public static String getDomain(Env env) {
+  public static String getDomain(String env) {
     String metaServerAddress = getMetaServerAddress(env);
     // if there is more than one address, need to select one
     if (metaServerAddress.contains(",")) {
@@ -68,7 +67,7 @@ public class MetaDomainConsts {
   /**
    * Return meta server address. If multiple meta server addresses are configured, will return the comma separated string.
    */
-  public static String getMetaServerAddress(Env env) {
+  public static String getMetaServerAddress(String env) {
     if (!metaServerAddressCache.containsKey(env)) {
       initMetaServerAddress(env);
     }
@@ -76,7 +75,7 @@ public class MetaDomainConsts {
     return metaServerAddressCache.get(env);
   }
 
-  private static void initMetaServerAddress(Env env) {
+  private static void initMetaServerAddress(String env) {
     if (metaServerProviders == null) {
       synchronized (LOCK) {
         if (metaServerProviders == null) {

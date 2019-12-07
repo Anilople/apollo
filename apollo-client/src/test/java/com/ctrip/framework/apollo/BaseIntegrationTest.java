@@ -22,7 +22,7 @@ import org.junit.BeforeClass;
 
 import com.ctrip.framework.apollo.build.MockInjector;
 import com.ctrip.framework.apollo.core.dto.ServiceDTO;
-import com.ctrip.framework.apollo.core.enums.Env;
+import com.ctrip.framework.apollo.core.constants.Env;
 import com.ctrip.framework.apollo.core.utils.ClassLoaderUtil;
 import com.ctrip.framework.apollo.internals.DefaultInjector;
 import com.ctrip.framework.apollo.util.ConfigUtil;
@@ -160,7 +160,7 @@ public abstract class BaseIntegrationTest{
     }
 
     @Override
-    public Env getApolloEnv() {
+    public String getApolloEnv() {
       return Env.DEV;
     }
 

@@ -5,7 +5,7 @@ import com.ctrip.framework.apollo.common.dto.ItemDTO;
 import com.ctrip.framework.apollo.common.dto.NamespaceDTO;
 import com.ctrip.framework.apollo.common.exception.BadRequestException;
 import com.ctrip.framework.apollo.core.enums.ConfigFileFormat;
-import com.ctrip.framework.apollo.core.enums.Env;
+import com.ctrip.framework.apollo.core.constants.Env;
 import com.ctrip.framework.apollo.core.utils.StringUtils;
 import com.ctrip.framework.apollo.portal.component.PermissionValidator;
 import com.ctrip.framework.apollo.portal.entity.model.NamespaceSyncModel;
@@ -162,7 +162,7 @@ public class ItemController {
       }
 
       if (permissionValidator
-          .shouldHideConfigToCurrentUser(namespace.getAppId(), namespace.getEnv().name(), namespace.getNamespaceName())) {
+          .shouldHideConfigToCurrentUser(namespace.getAppId(), namespace.getEnv(), namespace.getNamespaceName())) {
         diff.setDiffs(new ItemChangeSets());
         diff.setExtInfo("You are not this project's administrator, nor you have edit or release permission for the namespace in environment: " + namespace.getEnv());
       }
@@ -176,7 +176,7 @@ public class ItemController {
                                      @RequestBody NamespaceSyncModel model) {
     checkModel(!model.isInvalid());
     boolean hasPermission = permissionValidator.hasModifyNamespacePermission(appId, namespaceName);
-    Env envNoPermission = null;
+    String envNoPermission = null;
     // if uses has ModifyNamespace permission then he has permission
     if (!hasPermission) {
       // else check if user has every env's ModifyNamespace permission

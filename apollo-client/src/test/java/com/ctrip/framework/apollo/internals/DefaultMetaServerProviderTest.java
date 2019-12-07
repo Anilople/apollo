@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import com.ctrip.framework.apollo.core.ConfigConsts;
-import com.ctrip.framework.apollo.core.enums.Env;
+import com.ctrip.framework.apollo.core.constants.Env;
 import org.junit.After;
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class DefaultMetaServerProviderTest {
   @Test
   public void testWithSystemProperty() throws Exception {
     String someMetaAddress = "someMetaAddress";
-    Env someEnv = Env.DEV;
+    String someEnv = Env.DEV;
 
     System.setProperty(ConfigConsts.APOLLO_META_KEY, " " + someMetaAddress + " ");
 
