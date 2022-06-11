@@ -85,6 +85,7 @@
 		<maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
 		<!-- for travis usage -->
 		<github.global.server>github</github.global.server>
+		<!--suppress UnresolvedMavenProperty -->
 		<github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
 	</properties>
 
